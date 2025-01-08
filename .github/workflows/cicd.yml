@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main  # Trigger the workflow when changes are pushed to the 'main' branch
-    paths:
-      - '**/*.html'
-      - '**/Dockerfile'  # Trigger the workflow if Dockerfile is modified
 
 jobs:
   build:
@@ -28,8 +25,7 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build -t ${{ secrets.DOCKER_USERNAME }}/my-repo-name:latest .
-        
+
     - name: Push the Docker image
       run: |
         docker push ${{ secrets.DOCKER_USERNAME }}/my-repo-name:latest
-
