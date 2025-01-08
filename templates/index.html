@@ -4,114 +4,253 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank Marketing Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto; /* Enable scrolling if content exceeds viewport */
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh; /* Set a max height to prevent overflow */
+            overflow-y: auto; /* Make container scrollable if content exceeds max height */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="number"], select, input[type="radio"] {
+            margin-bottom: 15px;
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        select {
+            padding: 8px;
+            width: 100%;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        .radio-group {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 18px;
+            margin-top: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Bank Marketing Campaign Form</h1>
-    <form action="/predict" method="post">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required><br><br>
+    <div class="container">
+        <h1>Bank Marketing Campaign Form</h1>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
 
-        <label for="job">Job:</label>
-        <select id="job" name="job" required>
-            <option value="admin">Admin</option>
-            <option value="unknown">Unknown</option>
-            <option value="unemployed">Unemployed</option>
-            <option value="management">Management</option>
-            <option value="housemaid">Housemaid</option>
-            <option value="entrepreneur">Entrepreneur</option>
-            <option value="student">Student</option>
-            <option value="blue-collar">Blue-collar</option>
-            <option value="self-employed">Self-employed</option>
-            <option value="retired">Retired</option>
-            <option value="technician">Technician</option>
-            <option value="services">Services</option>
-        </select><br><br>
+            <div class="form-group">
+                <label for="job">Job:</label>
+                <select id="job" name="job" required>
+                    <option value="admin">Admin</option>
+                    <option value="unknown">Unknown</option>
+                    <option value="unemployed">Unemployed</option>
+                    <option value="management">Management</option>
+                    <option value="housemaid">Housemaid</option>
+                    <option value="entrepreneur">Entrepreneur</option>
+                    <option value="student">Student</option>
+                    <option value="blue-collar">Blue-collar</option>
+                    <option value="self-employed">Self-employed</option>
+                    <option value="retired">Retired</option>
+                    <option value="technician">Technician</option>
+                    <option value="services">Services</option>
+                </select>
+            </div>
 
-        <label for="marital">Marital Status:</label>
-        <select id="marital" name="marital" required>
-            <option value="married">Married</option>
-            <option value="divorced">Divorced</option>
-            <option value="single">Single</option>
-        </select><br><br>
+            <div class="form-group">
+                <label for="marital">Marital Status:</label>
+                <select id="marital" name="marital" required>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                    <option value="single">Single</option>
+                </select>
+            </div>
 
-        <label for="education">Education:</label>
-        <select id="education" name="education" required>
-            <option value="unknown">Unknown</option>
-            <option value="secondary">Secondary</option>
-            <option value="primary">Primary</option>
-            <option value="tertiary">Tertiary</option>
-        </select><br><br>
+            <div class="form-group">
+                <label for="education">Education:</label>
+                <select id="education" name="education" required>
+                    <option value="unknown">Unknown</option>
+                    <option value="secondary">Secondary</option>
+                    <option value="primary">Primary</option>
+                    <option value="tertiary">Tertiary</option>
+                </select>
+            </div>
 
-        <label for="default">Has credit in default?</label>
-        <input type="radio" id="default_yes" name="default" value="yes" required>
-        <label for="default_yes">Yes</label>
-        <input type="radio" id="default_no" name="default" value="no" required>
-        <label for="default_no">No</label><br><br>
+            <div class="form-group">
+                <label for="default">Has credit in default?</label>
+                <div class="radio-group">
+                    <input type="radio" id="default_yes" name="default" value="yes" required>
+                    <label for="default_yes">Yes</label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" id="default_no" name="default" value="no" required>
+                    <label for="default_no">No</label>
+                </div>
+            </div>
 
-        <label for="balance">Average Yearly Balance (in euros):</label>
-        <input type="number" id="balance" name="balance" required><br><br>
+            <div class="form-group">
+                <label for="balance">Average Yearly Balance (in euros):</label>
+                <input type="number" id="balance" name="balance" required>
+            </div>
 
-        <label for="housing">Has housing loan?</label>
-        <input type="radio" id="housing_yes" name="housing" value="yes" required>
-        <label for="housing_yes">Yes</label>
-        <input type="radio" id="housing_no" name="housing" value="no" required>
-        <label for="housing_no">No</label><br><br>
+            <div class="form-group">
+                <label for="housing">Has housing loan?</label>
+                <div class="radio-group">
+                    <input type="radio" id="housing_yes" name="housing" value="yes" required>
+                    <label for="housing_yes">Yes</label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" id="housing_no" name="housing" value="no" required>
+                    <label for="housing_no">No</label>
+                </div>
+            </div>
 
-        <label for="loan">Has personal loan?</label>
-        <input type="radio" id="loan_yes" name="loan" value="yes" required>
-        <label for="loan_yes">Yes</label>
-        <input type="radio" id="loan_no" name="loan" value="no" required>
-        <label for="loan_no">No</label><br><br>
+            <div class="form-group">
+                <label for="loan">Has personal loan?</label>
+                <div class="radio-group">
+                    <input type="radio" id="loan_yes" name="loan" value="yes" required>
+                    <label for="loan_yes">Yes</label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" id="loan_no" name="loan" value="no" required>
+                    <label for="loan_no">No</label>
+                </div>
+            </div>
 
-        <label for="contact">Contact Communication Type:</label>
-        <select id="contact" name="contact" required>
-            <option value="unknown">Unknown</option>
-            <option value="telephone">Telephone</option>
-            <option value="cellular">Cellular</option>
-        </select><br><br>
+            <div class="form-group">
+                <label for="contact">Contact Communication Type:</label>
+                <select id="contact" name="contact" required>
+                    <option value="unknown">Unknown</option>
+                    <option value="telephone">Telephone</option>
+                    <option value="cellular">Cellular</option>
+                </select>
+            </div>
 
-        <label for="day">Last Contact Day of the Month:</label>
-        <input type="number" id="day" name="day" min="1" max="31" required><br><br>
+            <div class="form-group">
+                <label for="day">Last Contact Day of the Month:</label>
+                <input type="number" id="day" name="day" min="1" max="31" required>
+            </div>
 
-        <label for="month">Last Contact Month of the Year:</label>
-        <select id="month" name="month" required>
-            <option value="jan">January</option>
-            <option value="feb">February</option>
-            <option value="mar">March</option>
-            <option value="apr">April</option>
-            <option value="may">May</option>
-            <option value="jun">June</option>
-            <option value="jul">July</option>
-            <option value="aug">August</option>
-            <option value="sep">September</option>
-            <option value="oct">October</option>
-            <option value="nov">November</option>
-            <option value="dec">December</option>
-        </select><br><br>
+            <div class="form-group">
+                <label for="month">Last Contact Month of the Year:</label>
+                <select id="month" name="month" required>
+                    <option value="jan">January</option>
+                    <option value="feb">February</option>
+                    <option value="mar">March</option>
+                    <option value="apr">April</option>
+                    <option value="may">May</option>
+                    <option value="jun">June</option>
+                    <option value="jul">July</option>
+                    <option value="aug">August</option>
+                    <option value="sep">September</option>
+                    <option value="oct">October</option>
+                    <option value="nov">November</option>
+                    <option value="dec">December</option>
+                </select>
+            </div>
 
-        <label for="duration">Last Contact Duration (in seconds):</label>
-        <input type="number" id="duration" name="duration" required><br><br>
+            <div class="form-group">
+                <label for="duration">Last Contact Duration (in seconds):</label>
+                <input type="number" id="duration" name="duration" required>
+            </div>
 
-        <label for="campaign">Number of Contacts During Campaign:</label>
-        <input type="number" id="campaign" name="campaign" required><br><br>
+            <div class="form-group">
+                <label for="campaign">Number of Contacts During Campaign:</label>
+                <input type="number" id="campaign" name="campaign" required>
+            </div>
 
-        <label for="pdays">Days Since Last Contact from Previous Campaign:</label>
-        <input type="number" id="pdays" name="pdays" required><br><br>
+            <div class="form-group">
+                <label for="pdays">Days Since Last Contact from Previous Campaign:</label>
+                <input type="number" id="pdays" name="pdays" required>
+            </div>
 
-        <label for="previous">Number of Contacts Before Campaign:</label>
-        <input type="number" id="previous" name="previous" required><br><br>
+            <div class="form-group">
+                <label for="previous">Number of Contacts Before Campaign:</label>
+                <input type="number" id="previous" name="previous" required>
+            </div>
 
-        <label for="poutcome">Outcome of Previous Campaign:</label>
-        <select id="poutcome" name="poutcome" required>
-            <option value="unknown">Unknown</option>
-            <option value="other">Other</option>
-            <option value="failure">Failure</option>
-            <option value="success">Success</option>
-        </select><br><br>
+            <div class="form-group">
+                <label for="poutcome">Outcome of Previous Campaign:</label>
+                <select id="poutcome" name="poutcome" required>
+                    <option value="unknown">Unknown</option>
+                    <option value="other">Other</option>
+                    <option value="failure">Failure</option>
+                    <option value="success">Success</option>
+                </select>
+            </div>
 
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit">Submit</button>
+        </form>
 
-    <h2>{{ prediction_text }}</h2>
+        <h2>{% if prediction_text %}{{ prediction_text }}{% endif %}</h2>
+    </div>
 </body>
 </html>
